@@ -1,18 +1,18 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
 
-var indexRouter = require('./routes/index');
+import postsRouter from './routes/postsRouter';
 
-var app = express();
+const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.get('/', (req, res) => res.send('Successfully hit root endpoint!'));
+
+app.use('/posts', postsRouter);
 
 module.exports = app;
