@@ -1,10 +1,14 @@
 'use strict';
-module.exports = (sequelize, DataTypes) => {
+
+export default (sequelize, DataTypes) => {
   const Post = sequelize.define('Post', {
-    value: DataTypes.STRING
+    value: DataTypes.STRING,
+    WallId: DataTypes.INTEGER
   }, {});
-  Post.associate = function (models) {
-    // associations can be defined here
+
+  Post.associate = models => {
+    Post.belongsTo(models.Wall)
   };
+
   return Post;
 };
