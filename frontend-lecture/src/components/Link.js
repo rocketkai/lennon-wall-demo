@@ -1,22 +1,24 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
+import React from "react";
+import { NavLink } from "react-router-dom";
 
-const Link = ({ active, children, onClick }) => (
-  <button
-    onClick={onClick}
-    disabled={active}
-    style={{
-      marginLeft: '4px'
+const Link = ({ filter, children }) => (
+  <NavLink
+    exact
+    to={filter === "SHOW_ALL" ? "/" : `/${filter}`}
+    activeStyle={{
+      textDecoration: "none",
+      color: "black"
     }}
   >
     {children}
-  </button>
-)
+  </NavLink>
+);
 
 Link.propTypes = {
-  active: PropTypes.bool.isRequired,
+  // active: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func.isRequired
-}
+};
 
-export default Link
+export default Link;
