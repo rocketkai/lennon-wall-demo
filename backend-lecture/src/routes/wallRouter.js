@@ -1,13 +1,11 @@
 import express from "express";
+import { createWall } from "../controllers/wallController";
 import { Wall } from "../db/models";
 
 const router = express.Router();
 
 // Create wall and send it back in response
-router.post("/create", async (req, res) => {
-  const newWall = await Wall.create({ name: req.body.name });
-  res.send(newWall);
-});
+router.post("/create", (req, res) => createWall(req, res));
 
 // Retrieve wall
 router.get("/retrieve", async (req, res) => {
