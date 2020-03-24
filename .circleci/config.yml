@@ -4,8 +4,8 @@ orbs:
 jobs:
   build-and-test-backend:
     docker:
-      image: circleci/node
-      image: circleci/postgres
+      - image: circleci/node:12
+      - image: circleci/postgres:12
     steps:
       - checkout
       - node/with-cache:
