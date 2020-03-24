@@ -15,6 +15,7 @@ jobs:
     steps:
       - checkout
       - node/with-cache:
+          dir: ~/project/backend/node_modules
           steps:
             - run:
                 command: npm install
