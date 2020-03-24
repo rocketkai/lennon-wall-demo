@@ -10,11 +10,11 @@ jobs:
       - node/with-cache:
           steps:
             - run:
-              command: npm install
-              working_directory: backend
+                command: npm install
+                working_directory: backend
             - run:
-              command: npm test
-              working_directory: backend
+                command: npm test
+                working_directory: backend
 workflows:
   build-and-test:
     jobs:
